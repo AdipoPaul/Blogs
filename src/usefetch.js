@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useFetch = (url) => {
-    const [data, setData] = useState(null);
+    const [data, setData, setTitle, setBody, setAuthor] = useState(null);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null)
     
@@ -19,7 +19,7 @@ const useFetch = (url) => {
                 .then(data => {
                     setData(data);
                     setIsPending(false);
-                    setError(null)
+                    setError(null);
                 })
                 .catch(err => {
                     if (err.name === 'AbortError'){

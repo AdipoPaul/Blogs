@@ -14,6 +14,14 @@ const BlogDetails = () => {
         })
     }
 
+    const handleEdit = () => {
+        fetch('http://localhost:8000/blogs/' + blog.id, {
+            method: 'GET',
+        }). then(() => {
+            history.push('/edit/' + blog.id);
+        })
+    }
+
     return ( 
         <div className="blog-details">
             {isPending && <div>Loading...</div>}
@@ -24,6 +32,7 @@ const BlogDetails = () => {
                     <p>Written by {blog.author}</p>
                     <div>{blog.body}</div> 
                     <button onClick={handleClick}>Delete</button>
+                    <div><button onClick={handleEdit}>Edit</button></div>
                 </article>                
             )}
         </div>
